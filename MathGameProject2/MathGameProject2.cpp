@@ -1,20 +1,36 @@
-// MathGameProject2.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
+#include<iostream>
+#include<cstdlib>
 
-#include <iostream>
+using namespace std;
 
-int main()
-{
-    std::cout << "Hello World!\n";
+
+enum enQuestionLevel{Easy=1,Med=2,Hrad=3,Mix=4};
+enum enOperationType{Add=1,Sub=2,Mul=3,Div=4,Mix=5};
+
+
+struct stGameResults {
+
+	short NumberOfQuestions = 0;
+	enQuestionLevel QuestionLevel;
+	enOperationType OperationType;
+	short NumberOfRightAnswer = 0;
+	short NumberOfWrongAnser = 0;
+	string QuestionLevelName;
+	string OperationTypeName;
+
+};
+
+
+
+
+
+
+int main() {
+
+
+
+
+
+
+	return 0;
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
