@@ -123,10 +123,12 @@ void CheckAnswer(int AnswerFromCalcluate, int AnswerUser) {
 
 	if (AnswerFromCalcluate == AnswerUser) {
 		cout << "Correct Anhsweer (-:\n";
+		system("color 2F");
 
 	}
 	else {
 		cout << "Wrong answer , the correct answer is   " << AnswerFromCalcluate << endl;
+		system("color 4F");
 	}
 
 }
@@ -142,6 +144,7 @@ void GenerateQuestions(enQuestionLevel QLevel, enOperationType Optype) {
 		int Num1 = RandomNumber(1, 10);
 		int Num2 = RandomNumber(1, 10);
 		CheckAnswer(Calculate(Optype, Num1, Num2), PrintQuestionStruct(Num1, Num2, Optype));
+		break;
 	}
 
 	case enQuestionLevel::Med:
@@ -149,6 +152,7 @@ void GenerateQuestions(enQuestionLevel QLevel, enOperationType Optype) {
 		int Num1 = RandomNumber(11, 30);
 		int Num2 = RandomNumber(11, 30);
 		CheckAnswer(Calculate(Optype, Num1, Num2), PrintQuestionStruct(Num1, Num2, Optype));
+		break;
 	}
 
 	case enQuestionLevel::Hrad:
@@ -156,6 +160,7 @@ void GenerateQuestions(enQuestionLevel QLevel, enOperationType Optype) {
 		int Num1 = RandomNumber(30, 100);
 		int Num2 = RandomNumber(30, 100);
 		CheckAnswer(Calculate(Optype, Num1, Num2), PrintQuestionStruct(Num1, Num2, Optype));
+		break;
 
 	}
 	}
