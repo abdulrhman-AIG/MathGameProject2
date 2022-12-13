@@ -3,8 +3,8 @@
 
 using namespace std;
 
-enum enQuestionLevel { Easy = 1, Med = 2, Hrad = 3 };
-enum enOperationType { Add = 1, Sub = 2, Mul = 3, Div = 4 };
+enum enQuestionLevel { Easy = 1, Med = 2, Hrad = 3,LMix=4 };
+enum enOperationType { Add = 1, Sub = 2, Mul = 3, Div = 4,OMix=5 };
 enum enOperationTypeSign { sAdd = '+', sSub = '-', sMul = '*', sDiv = '/', sMix = '#' };
 
 struct stGameResults {
@@ -135,37 +135,100 @@ void CheckAnswer(int AnswerFromCalcluate, int AnswerUser) {
 
 
 
+
 void GenerateQuestions(enQuestionLevel QLevel, enOperationType Optype) {
 
 	switch (QLevel)
 	{
 	case enQuestionLevel::Easy:
 	{
-		int Num1 = RandomNumber(1, 10);
+		if (Optype != enOperationType::OMix) {
+
+        int Num1 = RandomNumber(1, 10);
 		int Num2 = RandomNumber(1, 10);
 		CheckAnswer(Calculate(Optype, Num1, Num2), PrintQuestionStruct(Num1, Num2, Optype));
-		break;
+		
+		}
+		else {
+			int Num1 = RandomNumber(1, 10);
+			int Num2 = RandomNumber(1, 10);
+			int Op = RandomNumber(1, 4);
+			CheckAnswer(Calculate((enOperationType)Op, Num1, Num2), PrintQuestionStruct(Num1, Num2, (enOperationType)Op));
+
+
+		}
+        break;
+		
 	}
 
 	case enQuestionLevel::Med:
 	{
-		int Num1 = RandomNumber(11, 30);
-		int Num2 = RandomNumber(11, 30);
+		if (Optype != enOperationType::OMix) {
+
+        int Num1 = RandomNumber(1, 10);
+		int Num2 = RandomNumber(1, 10);
 		CheckAnswer(Calculate(Optype, Num1, Num2), PrintQuestionStruct(Num1, Num2, Optype));
+		
+		}
+		else {
+			int Num1 = RandomNumber(1, 10);
+			int Num2 = RandomNumber(1, 10);
+			int Op = RandomNumber(1, 4);
+			CheckAnswer(Calculate((enOperationType)Op, Num1, Num2), PrintQuestionStruct(Num1, Num2, (enOperationType)Op));
+		}
 		break;
 	}
 
 	case enQuestionLevel::Hrad:
 	{
-		int Num1 = RandomNumber(30, 100);
-		int Num2 = RandomNumber(30, 100);
-		CheckAnswer(Calculate(Optype, Num1, Num2), PrintQuestionStruct(Num1, Num2, Optype));
+		if (Optype != enOperationType::OMix) {
+
+			int Num1 = RandomNumber(30, 100);
+			int Num2 = RandomNumber(30, 100);
+			CheckAnswer(Calculate(Optype, Num1, Num2), PrintQuestionStruct(Num1, Num2, Optype));
+
+		}
+		else {
+			int Num1 = RandomNumber(30, 100);
+			int Num2 = RandomNumber(30, 100);
+			int Op = RandomNumber(1, 4);
+			CheckAnswer(Calculate((enOperationType)Op, Num1, Num2), PrintQuestionStruct(Num1, Num2, (enOperationType)Op));
+		}
 		break;
 
+	}
+	case enQuestionLevel::LMix:
+	{
+		/*int Num1 = RandomNumber(1, 100);
+		int Num2 = RandomNumber(1, 100);
+		int OOp = RandomNumber(1, 4);
+		CheckAnswer(Calculate((enOperationType)OOp, Num1, Num2), PrintQuestionStruct(Num1, Num2, (enOperationType) OOp));*/
+		if (Optype == enOperationType::OMix) {
+
+		int Num1 = RandomNumber(1, 3);
+		int OOp = RandomNumber(1, 4);
+		GenerateQuestions((enQuestionLevel)Num1, (enOperationType)OOp);
+		
+		
+		}
+		else if (Optype != enOperationType::OMix) {
+			int Num1 = RandomNumber(1, 3);
+			GenerateQuestions((enQuestionLevel)Num1, Optype);
+		}
+
+		break;
 	}
 	}
 
 }
+//
+//void MixFunction() {
+//	int Num1 = RandomNumber(1, 3);
+//	int OOp = RandomNumber(1, 4);
+//	GenerateQuestions((enQuestionLevel)Num1, (enOperationType)OOp);
+//
+//
+//}
 
 int PlayGame(short HowManyQuestions) {
 	enQuestionLevel Qlevel = ReadQuestionLevel();
@@ -175,6 +238,7 @@ int PlayGame(short HowManyQuestions) {
 
 		cout << "\n\nQuestions [" << Question << "/" << HowManyQuestions << "]\n";
 		GenerateQuestions(Qlevel, OpType);
+
 
 
 
