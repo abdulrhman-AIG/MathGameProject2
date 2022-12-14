@@ -5,7 +5,7 @@ using namespace std;
 
 enum enQuestionLevel { Easy = 1, Med = 2, Hrad = 3,LMix=4 };
 enum enOperationType { Add = 1, Sub = 2, Mul = 3, Div = 4,OMix=5 };
-enum enOperationTypeSign { sAdd = '+', sSub = '-', sMul = '*', sDiv = '/', sMix = '#' };
+
 
 struct stGameResults {
 
@@ -136,6 +136,7 @@ void  CheckAnswer(int AnswerFromCalcluate, int AnswerUser,stGameResults &GameRes
 	else {
 		cout << "Wrong answer , the correct answer is   " << AnswerFromCalcluate << endl;
 		system("color 4F");
+		cout << "\a";
 		GameResults.NumberOfWrongAnser+=1;
 		cout << "\nCheck: "<<GameResults.NumberOfWrongAnser << endl;
 		 
@@ -278,13 +279,13 @@ void showFinalResults(stGameResults &GameResults) {
 		cout << "\n\n__________________________\n\n";
 		cout << "Final Results is PASS (-:";
 		cout << "\n\n__________________________\n\n";
-		system("color 2F");
+	
 	}
 	else {
 		cout << "\n\n__________________________\n\n";
 		cout << "Final Results is Fail (-:";
 		cout << "\n\n__________________________\n\n";
-		system("color 4F");
+		
 
 	}
 
